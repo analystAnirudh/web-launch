@@ -1,0 +1,4271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Proofr - Your Unfair Advantage to Cracking Dream Roles</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== ROOT VARIABLES ===== */
+        :root {
+            --primary-blue: #001a33;
+            --accent-blue: #0055ff;
+            --light-blue: #e6f0ff;
+            --dark-text: #001a33;
+            --light-text: #ffffff;
+            --highlight: #00c896;
+            --light-bg: #f8f9ff;
+            --card-shadow: 0 10px 30px rgba(0, 85, 255, 0.1);
+            --marquee-bg: #f0f4f8;
+            --gradient-primary: linear-gradient(135deg, #001a33 0%, #0055ff 100%);
+            --gradient-accent: linear-gradient(135deg, #0055ff 0%, #00c896 100%);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.18);
+        }
+        
+        /* ===== BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--light-bg);
+            padding-bottom: 60px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ===== HEADER STYLES ===== */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 26, 51, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.4s ease;
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 26, 51, 0.08);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 800;
+            font-size: 32px;
+            color: var(--primary-blue);
+            letter-spacing: -0.5px;
+        }
+        
+        .logo span {
+            color: var(--accent-blue);
+            position: relative;
+        }
+        
+        .logo span::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background: var(--gradient-accent);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--gradient-primary);
+            transition: width 0.5s ease;
+            z-index: -1;
+        }
+        
+        .cta-button:hover::before {
+            width: 100%;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 197, 150, 0.3);
+        }
+        
+        /* ===== SESSION BANNER ===== */
+        .session-banner {
+            background: var(--gradient-accent);
+            color: white;
+            text-align: center;
+            padding: 12px 0;
+            position: sticky;
+            top: 70px;
+            z-index: 900;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .session-banner-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .session-banner-text {
+            font-weight: 500;
+            font-size: 16px;
+        }
+        
+        .session-countdown {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0,0,0,0.15);
+            padding: 5px 15px;
+            border-radius: 30px;
+        }
+        
+        .session-countdown-number {
+            font-weight: 700;
+            font-size: 18px;
+            min-width: 25px;
+            text-align: center;
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 180px 0 120px;
+            background: var(--gradient-primary);
+            color: var(--light-text);
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        
+        .particles-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+        
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 56px;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .hero-button {
+            padding: 16px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.4s;
+            font-size: 17px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .primary-btn {
+            background: var(--gradient-accent);
+            color: white;
+            box-shadow: 0 10px 25px rgba(0, 200, 150, 0.3);
+        }
+        
+        .secondary-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .primary-btn::before,
+        .secondary-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: width 0.5s ease;
+            z-index: -1;
+        }
+        
+        .primary-btn:hover::before,
+        .secondary-btn:hover::before {
+            width: 100%;
+        }
+        
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 200, 150, 0.4);
+        }
+        
+        .secondary-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+        }
+        
+        /* ===== STATS SECTION ===== */
+        .stats {
+            padding: 100px 0;
+            background-color: var(--light-text);
+            position: relative;
+        }
+        
+        .stats::before {
+            content: "";
+            position: absolute;
+            top: -100px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(0, 26, 51, 0.1), transparent);
+            z-index: 0;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 30px 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .stat-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gradient-accent);
+            z-index: -1;
+            transition: width 0.4s ease;
+        }
+        
+        .stat-item:hover::before {
+            width: 100%;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 85, 255, 0.15);
+        }
+        
+        .stat-item:hover .stat-number,
+        .stat-item:hover .stat-label {
+            color: white;
+        }
+        
+        .stat-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: var(--accent-blue);
+            transition: all 0.4s ease;
+        }
+        
+        .stat-item:hover .stat-icon {
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+            transition: all 0.4s ease;
+        }
+        
+        .stat-label {
+            font-size: 18px;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: all 0.4s ease;
+        }
+        
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            padding: 120px 0;
+            background-color: var(--light-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 42px;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: var(--gradient-accent);
+            border-radius: 3px;
+        }
+        
+        .section-header p {
+            max-width: 700px;
+            margin: 30px auto 0;
+            font-size: 18px;
+            color: #555;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 32px;
+            margin-bottom: 25px;
+            color: var(--primary-blue);
+            line-height: 1.3;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 26, 51, 0.15);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about-image:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+        
+        /* Impact Stats Styles */
+        .impact-stats-container {
+            background: linear-gradient(135deg, rgba(0, 85, 255, 0.05) 0%, rgba(0, 200, 150, 0.05) 100%);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid rgba(0, 85, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .impact-stats-container h3 {
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        .impact-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .impact-stat {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 85, 255, 0.05);
+            transition: all 0.3s ease;
+            border-bottom: 3px solid var(--accent-blue);
+        }
+
+        .impact-stat:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 85, 255, 0.1);
+        }
+
+        .impact-stat .stat-number {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .impact-stat .stat-label {
+            font-size: 16px;
+            color: var(--dark-text);
+            font-weight: 500;
+        }
+
+        /* Animation for background cycling */
+        @keyframes gradientCycle {
+            0% { background: linear-gradient(135deg, rgba(0, 85, 255, 0.05) 0%, rgba(0, 200, 150, 0.05) 100%); }
+            25% { background: linear-gradient(135deg, rgba(0, 200, 150, 0.05) 0%, rgba(255, 255, 255, 0.1) 100%); }
+            50% { background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(0, 85, 255, 0.05) 100%); }
+            75% { background: linear-gradient(135deg, rgba(0, 85, 255, 0.05) 0%, rgba(0, 200, 150, 0.05) 100%); }
+            100% { background: linear-gradient(135deg, rgba(0, 200, 150, 0.05) 0%, rgba(0, 85, 255, 0.05) 100%); }
+        }
+
+        .impact-stats-container {
+            animation: gradientCycle 15s infinite;
+        }
+
+        /* ===== FOUNDERS SECTION ===== */
+        .founders-section {
+            padding: 120px 0;
+            background-color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .founders-section::before {
+            content: "";
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 85, 255, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 12s ease-in-out infinite;
+            z-index: 0;
+        }
+        
+        /* Founders Grid */
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .founder-card {
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 26, 51, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            transform: translateY(0);
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .founder-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 26, 51, 0.15);
+        }
+        
+        .founder-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-accent);
+            z-index: 2;
+            transition: height 0.4s ease;
+        }
+        
+        .founder-card:hover::before {
+            height: 100%;
+        }
+        
+        .founder-header {
+            padding: 30px;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .founder-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 3;
+            transition: all 0.4s ease;
+        }
+        
+        .founder-card:hover .founder-image {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .founder-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .founder-info {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .founder-info h3 {
+            font-size: 24px;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+            transition: color 0.4s ease;
+        }
+        
+        .founder-title {
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 18px;
+            transition: color 0.4s ease;
+        }
+        
+        .founder-college {
+            color: #777;
+            font-weight: 500;
+            margin-bottom: 15px;
+            transition: color 0.4s ease;
+        }
+        
+        .founder-body {
+            padding: 0 30px 30px;
+            position: relative;
+            z-index: 2;
+            flex-grow: 1;
+        }
+        
+        .founder-quote {
+            font-style: italic;
+            color: #555;
+            position: relative;
+            padding: 0 0 0 30px;
+            line-height: 1.8;
+            transition: color 0.4s ease;
+        }
+        
+        .founder-quote::before {
+            content: """;
+            font-size: 60px;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            color: var(--light-blue);
+            font-family: Georgia, serif;
+            line-height: 1;
+            opacity: 0.8;
+            z-index: -1;
+            transition: all 0.4s ease;
+        }
+        
+        .founder-card:hover .founder-quote::before {
+            color: white;
+            opacity: 0.3;
+        }
+        
+        .founder-metrics {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .founder-metric {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.4s ease;
+        }
+        
+        .founder-card:hover .founder-info h3,
+        .founder-card:hover .founder-title,
+        .founder-card:hover .founder-college,
+        .founder-card:hover .founder-quote,
+        .founder-card:hover .founder-metric {
+            color: white;
+        }
+        
+        .founder-card:hover .founder-metric {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .founder-social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .founder-social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light-blue);
+            color: var(--accent-blue);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .founder-card:hover .founder-social-link {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+        
+        .founder-social-link:hover {
+            transform: translateY(-3px);
+            background: var(--gradient-accent);
+            color: white;
+        }
+        
+        /* ===== FELLOWSHIP SECTION ===== */
+        .fellowship {
+            padding: 120px 0;
+            background-color: var(--light-text);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fellowship::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 85, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 12s ease-in-out infinite;
+        }
+        
+        .fellowship-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .fellowship-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .fellowship-card {
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 26, 51, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            transform: translateY(0);
+            z-index: 1;
+        }
+        
+        .fellowship-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-accent);
+            z-index: 2;
+            transition: height 0.4s ease;
+        }
+        
+        .fellowship-card:hover::before {
+            height: 100%;
+        }
+        
+        .fellowship-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 26, 51, 0.15);
+        }
+        
+        .card-header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .card-header h3 {
+            font-size: 24px;
+            margin-bottom: 5px;
+            height: 30px;
+            overflow: hidden;
+        }
+        
+        .card-body {
+            padding: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .card-body ul {
+            list-style-type: none;
+            margin-bottom: 20px;
+        }
+        
+        .card-body ul li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .fellowship-card:hover .card-body ul li {
+            color: white;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .card-body ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .card-body ul li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: var(--accent-blue);
+            position: absolute;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .fellowship-card:hover .card-body ul li::before {
+            color: white;
+        }
+        
+        /* ===== PRICING SECTION ===== */
+        .pricing {
+            padding: 120px 0;
+            background-color: var(--light-bg);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing::after {
+            content: "";
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 85, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 15s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+        
+        .pricing-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 20px 50px rgba(0, 26, 51, 0.1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .pricing-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: var(--gradient-accent);
+            z-index: 2;
+        }
+        
+        .pricing-header {
+            margin-bottom: 30px;
+        }
+        
+        .pricing-header h3 {
+            font-size: 36px;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+        
+        .pricing-price {
+            font-size: 56px;
+            font-weight: 800;
+            color: var(--highlight);
+            margin: 30px 0;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .pricing-price span {
+            font-size: 28px;
+            color: #999;
+            font-weight: 500;
+            text-decoration: line-through;
+            margin-left: 15px;
+        }
+        
+        .countdown {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            display: inline-flex;
+            gap: 25px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .countdown-item {
+            text-align: center;
+            min-width: 70px;
+        }
+        
+        .countdown-number {
+            font-size: 36px;
+            font-weight: 700;
+        }
+        
+        .countdown-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            letter-spacing: 1px;
+        }
+        
+        .seats-left {
+            color: var(--highlight);
+            font-weight: 700;
+            margin: 20px 0;
+            font-size: 20px;
+        }
+        
+        .enrollment-note {
+            background: rgba(0, 200, 150, 0.1);
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin: 30px auto;
+            padding: 15px;
+            border-radius: 12px;
+            max-width: 80%;
+            font-size: 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* ===== EVENT SECTION ===== */
+        .event {
+            padding: 120px 0;
+            background: linear-gradient(to bottom, #f0f7ff, #ffffff);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .event-container {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .event-image {
+            flex: 1;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 26, 51, 0.1);
+            transform: perspective(1000px) rotateY(5deg);
+            transition: transform 0.5s ease;
+            position: relative;
+        }
+        
+        .event-image:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+        
+        .event-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .event-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .event-content {
+            flex: 1;
+        }
+        
+        .event-content h3 {
+            font-size: 36px;
+            color: var(--primary-blue);
+            margin-bottom: 25px;
+            line-height: 1.3;
+        }
+        
+        .event-highlights {
+            margin: 30px 0;
+        }
+        
+        .event-highlight {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .event-highlight:hover {
+            background: rgba(0, 85, 255, 0.05);
+            transform: translateX(10px);
+        }
+        
+        .event-highlight i {
+            background: var(--gradient-accent);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+            font-size: 18px;
+        }
+        
+        /* ===== FAQ SECTION ===== */
+        .faq {
+            padding: 120px 0;
+            background-color: var(--light-text);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .faq::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 85, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 12s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 25px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .faq-question {
+            background-color: var(--light-blue);
+            padding: 25px;
+            font-weight: 600;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: rgba(0, 85, 255, 0.1);
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 25px;
+            max-height: 500px;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        /* ===== COMPANIES MARQUEE ===== */
+        .companies {
+            padding: 100px 0;
+            background-color: var(--marquee-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .companies::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/clean-textile.png');
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .section-header.mb-50 {
+            margin-bottom: 50px;
+        }
+        
+        .marquee-container {
+            position: relative;
+            overflow: hidden;
+            padding: 30px 0;
+        }
+        
+        .marquee {
+            display: flex;
+            animation: marquee 11s linear infinite;
+        }
+        
+        .marquee:hover {
+            animation-play-state: paused;
+        }
+        
+        .company-item {
+            margin: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 40px;
+            background: white;
+            border-radius: 15px;
+            font-weight: 500;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+        }
+        
+        .company-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .company-logo {
+            height: 40px;
+            width: auto;
+            max-width: 180px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+            filter: grayscale(0%) contrast(100%);
+        }
+        
+        .company-item:hover .company-logo {
+            filter:  contrast(100%);
+            transform: scale(1.1);
+        }
+        
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            padding: 120px 0;
+            background: linear-gradient(to bottom, #ffffff, #f0f7ff);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 85, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 15s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-method:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 25px;
+            font-size: 28px;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .contact-text h4 {
+            font-size: 22px;
+            margin-bottom: 8px;
+            color: var(--primary-blue);
+        }
+        
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .form-group label {
+            font-weight: 500;
+            color: var(--primary-blue);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(0, 85, 255, 0.1);
+            outline: none;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 100px 0 40px;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png');
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 70px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-logo {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+        
+        .footer-logo span {
+            color: var(--highlight);
+        }
+        
+        .footer-about p {
+            opacity: 0.8;
+            margin-bottom: 30px;
+            font-size: 17px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 20px;
+        }
+        
+        .social-icon:hover {
+            background: var(--gradient-accent);
+            transform: translateY(-5px);
+        }
+        
+        .footer-links h4 {
+            font-size: 22px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-links h4::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--highlight);
+            border-radius: 2px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links ul li a {
+            color: white;
+            opacity: 0.8;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 17px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links ul li a i {
+            color: var(--highlight);
+            transition: transform 0.3s ease;
+        }
+        
+        .footer-links ul li a:hover {
+            opacity: 1;
+            padding-left: 5px;
+        }
+        
+        .footer-links ul li a:hover i {
+            transform: translateX(5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* ===== RESOURCES BOX ===== */
+        .resources-box {
+            background: linear-gradient(135deg, rgba(0, 85, 255, 0.05) 0%, rgba(0, 200, 150, 0.05) 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 50px;
+            text-align: center;
+            border: 1px solid rgba(0, 85, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .resources-box h3 {
+            margin-bottom: 30px;
+            color: var(--primary-blue);
+            font-size: 28px;
+        }
+        
+        .resource-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .resource-link {
+            background: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--primary-blue);
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 85, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .resource-link:hover {
+            background: var(--gradient-accent);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 200, 150, 0.2);
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes blink-caret {
+            from, to { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes priceCount {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        @keyframes gradientCycle {
+            0% { background: linear-gradient(135deg, rgba(0, 85, 255, 0.05) 0%, rgba(0, 200, 150, 0.05) 100%); }
+            25% { background: linear-gradient(135deg, rgba(0, 200, 150, 0.05) 0%, rgba(255, 255, 255, 0.1) 100%); }
+            50% { background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(0, 85, 255, 0.05) 100%); }
+            75% { background: linear-gradient(135deg, rgba(0, 85, 255, 0.05) 0%, rgba(0, 200, 150, 0.05) 100%); }
+            100% { background: linear-gradient(135deg, rgba(0, 200, 150, 0.05) 0%, rgba(0, 85, 255, 0.05) 100%); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        .price-count {
+            animation: priceCount 1.5s ease-out;
+        }
+        
+        /* ===== RESPONSIVE STYLES ===== */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero {
+                padding: 150px 0 100px;
+            }
+            
+            .hero h1 {
+                font-size: 42px;
+            }
+            
+            .about-content, .event-container, .contact-container {
+                flex-direction: column;
+            }
+            
+            .event-image, .about-image {
+                margin-bottom: 50px;
+            }
+            
+            .stat-number {
+                font-size: 40px;
+            }
+            
+            .pricing-price {
+                font-size: 48px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 130px 0 80px;
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 17px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero-button {
+                padding: 15px 25px;
+                font-size: 16px;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section-header h2 {
+                font-size: 36px;
+            }
+            
+            .pricing-container {
+                padding: 40px 25px;
+            }
+            
+            .pricing-header h3 {
+                font-size: 30px;
+            }
+            
+            .pricing-price {
+                font-size: 42px;
+            }
+            
+            .countdown {
+                gap: 15px;
+                padding: 15px;
+            }
+            
+            .countdown-number {
+                font-size: 30px;
+            }
+            
+            .enrollment-note {
+                font-size: 16px;
+            }
+            
+            .event-content h3 {
+                font-size: 30px;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            /* Founders section adjustments */
+            .founders-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .founder-card {
+                max-width: 100%;
+            }
+            
+            /* Impact stats adjustments */
+            .impact-stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .logo {
+                font-size: 28px;
+            }
+            
+            .cta-button {
+                padding: 10px 20px;
+            }
+            
+            .session-banner-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .stat-item {
+                padding: 25px 15px;
+            }
+            
+            .stat-number {
+                font-size: 36px;
+            }
+            
+            .section-header h2 {
+                font-size: 30px;
+            }
+            
+            .pricing-price {
+                font-size: 36px;
+            }
+            
+            .countdown {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .countdown-item {
+                min-width: 60px;
+            }
+            
+            .countdown-number {
+                font-size: 26px;
+            }
+            
+            .footer-logo {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo" id="logo">Proo<span>fr</span></div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#fellowship">Fellowship</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#faq">FAQs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="https://superprofile.bio/vp/placements-101-fellowship" class="cta-button">Register Now</a>
+        </div>
+    </header>
+
+    <!-- Session Banner -->
+    <div class="session-banner">
+        <div class="container session-banner-content">
+            <div class="session-banner-text">
+                <i class="fas fa-calendar-alt"></i> Enrollment Open | Register Now
+            </div>
+            <div class="session-countdown">
+                <span class="session-countdown-number" id="session-hours">--</span>:
+                <span class="session-countdown-number" id="session-min">--</span>:
+                <span class="session-countdown-number" id="session-sec">--</span>
+            </div>
+            <a href="https://superprofile.bio/vp/placements-101-fellowship" class="cta-button" style="background: var(--gradient-accent); color: white;">
+                <i class="fab fa-enroll"></i> Enroll Now
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Placement 101 - Your Unfair Advantage to Cracking Dream Roles</h1>
+                <p>Proofr is a student-first early career platform that bridges the gap between college students and corporates. Join our flagship fellowship to help you break into top roles with real projects, mentorship, & structured prep, with a 10K+ member community.</p>
+                <div class="hero-buttons">
+                    <a href="https://superprofile.bio/vp/placements-101-fellowship" class="hero-button primary-btn pulse">Join Fellowship</a>
+                    <a href="#about" class="hero-button secondary-btn">Learn More</a>
+                </div>
+            </div>
+            <canvas id="particles-canvas" class="particles-background"></canvas>
+        </div>
+    </section>
+
+    <!-- Companies Marquee -->
+    <section class="companies">
+        <div class="container">
+            <div class="section-header fade-in mb-50">
+                <h2>We have Mentors from</h2>
+                <p>Top companies across industries</p>
+            </div>
+            
+            <div class="marquee-container">
+                <div class="marquee">
+                    <!-- Company logos will be added dynamically with JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container stats-container">
+            <div class="stat-item fade-in">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-number" id="students-count">0</div>
+                <div class="stat-label">Students</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-icon">
+                    <i class="fab fa-linkedin"></i>
+                </div>
+                <div class="stat-number" id="linkedin-count">0</div>
+                <div class="stat-label">LinkedIn Base</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="stat-number" id="resources-count">0</div>
+                <div class="stat-label">Resources</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="stat-number" id="opportunities-count">0</div>
+                <div class="stat-label">Opportunities</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>About Proofr</h2>
+                <p>Founded by SRCC students, we're revolutionizing early-career hiring by replacing traditional resumes with proof-of-work</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h3>Bridging the Gap Between Academia and Industry</h3>
+                    <p>Proofr is a pre-seed startup by SRCC undergraduates revolutionizing early-career hiring. We replace traditional resumes with proof-of-work, enabling students to showcase real project experience.</p>
+                    <p>Through curated job boards, portfolio tools, and cohort-based upskilling programs, Proofr connects talent with companies seeking demonstrated skill over pedigree.</p>
+                    <p>Our initiatives include expert-led sessions covering CV building, finance technicals, case solving, and more, conducted by alums from top firms like MBBs and Avendus.</p>
+                    <a href="#fellowship" class="cta-button">Our Programs</a>
+                </div>
+                <div class="about-image fade-in">
+                    <div class="impact-stats-container">
+                        <h3>Proofr Impact</h3>
+                        <div class="impact-stats-grid">
+                            <div class="impact-stat">
+                                <div class="stat-number" data-target="10000">0</div>
+                                <div class="stat-label">Students</div>
+                            </div>
+                            <div class="impact-stat">
+                                <div class="stat-number" data-target="100">0</div>
+                                <div class="stat-label">Opportunities</div>
+                            </div>
+                            <div class="impact-stat">
+                                <div class="stat-number" data-target="200">0</div>
+                                <div class="stat-label">Resources</div>
+                            </div>
+                            <div class="impact-stat">
+                                <div class="stat-number" data-target="50000">0</div>
+                                <div class="stat-label">LinkedIn Base</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insert this code AFTER the pricing section and BEFORE the event section -->
+
+<!-- Key Initiatives Section -->
+<section class="initiatives">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Our Key Initiatives</h2>
+            <p>Comprehensive solutions designed to accelerate your career journey</p>
+        </div>
+        
+        <div class="initiatives-grid">
+<!-- Fellowship -->
+            <div class="initiative-card fade-in">
+                <div class="initiative-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <div class="initiative-content">
+                    <h3>Placements 101 Fellowship</h3>
+                    <p>A 21-day cohort program designed to demystify placements, build proof of work, and get you placement ready from day one.</p>
+                </div>
+                <div class="initiative-cta">
+                    <a href="https://chat.whatsapp.com/KGgQ23a1iL5AUXJ4gNMeVT" class="resource-link">
+                        <i class="fas fa-external-link-alt"></i> Learn More
+                    </a>
+                </div>
+            </div>
+            <!-- Job Board -->
+            <div class="initiative-card fade-in">
+                <div class="initiative-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="initiative-content">
+                    <h3>Job Board by Proofr</h3>
+                    <p>Curated jobs, internships, and referral opportunities tailored for early-career talent. No mindless scrolling, just real leads.</p>
+                </div>
+                <div class="initiative-cta">
+                    <a href="https://chat.whatsapp.com/KfN9DUE1SnBHAtKbqJ5NYy" class="resource-link">
+                        <i class="fas fa-external-link-alt"></i> Explore Opportunities
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Case Connect -->
+            <div class="initiative-card fade-in">
+                <div class="initiative-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="initiative-content">
+                    <h3>Case Connect by Proofr</h3>
+                    <p>An open community to team up, prep smart, and crack India's top case competitions with real-time alerts, resources, and peer collaboration.</p>
+                </div>
+                <div class="initiative-cta">
+                    <a href="https://chat.whatsapp.com/CvUwd4JOpk4IT4GAtFEv06" class="resource-link">
+                        <i class="fas fa-external-link-alt"></i> Join Community
+                    </a>
+                </div>
+            </div>
+            <!-- Resources -->
+            <div class="initiative-card fade-in">
+                <div class="initiative-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="initiative-content">
+                    <h3>Resources by Proofr</h3>
+                    <p>Free, high-impact career resources for everything non-tech. Shared weekly to guide, upskill, and support your journey.</p>
+                </div>
+                <div class="initiative-cta">
+                    <a href="https://whatsapp.com/channel/0029VbBAlhz90x2sfdgbLP3M" class="resource-link">
+                        <i class="fas fa-external-link-alt"></i> Access Resources
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sessions -->
+            <div class="initiative-card fade-in">
+                <div class="initiative-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <div class="initiative-content">
+                    <h3>Sessions by Proofr</h3>
+                    <p>Live and interactive sessions with industry mentors, alumni, and operators. Insights that go beyond the standard.</p>
+                </div>
+                <div class="initiative-cta">
+                    <a href="https://chat.whatsapp.com/HIj9kI6Izro4tmKTINVVon" class="resource-link">
+                        <i class="fas fa-external-link-alt"></i> Coming Soon!!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Key Initiatives Section */
+    .initiatives {
+        padding: 100px 0;
+        background-color: var(--light-bg);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .initiatives::before {
+        content: "";
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(0, 85, 255, 0.05) 0%, transparent 70%);
+        border-radius: 50%;
+        animation: float 15s ease-in-out infinite;
+        z-index: 0;
+    }
+    
+    .initiatives-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+    }
+    
+    .initiative-card {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 85, 255, 0.1);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    
+    .initiative-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 85, 255, 0.15);
+    }
+    
+    .initiative-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: var(--gradient-accent);
+        z-index: 2;
+        transition: height 0.4s ease;
+    }
+    
+    .initiative-card:hover::before {
+        height: 100%;
+        opacity: 0.05;
+    }
+    
+    .initiative-icon {
+        font-size: 42px;
+        color: var(--accent-blue);
+        margin-bottom: 25px;
+        transition: all 0.4s ease;
+    }
+    
+    .initiative-card:hover .initiative-icon {
+        color: var(--primary-blue);
+        transform: scale(1.1);
+    }
+    
+    .initiative-content {
+        flex: 1;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .initiative-content h3 {
+        font-size: 22px;
+        color: var(--primary-blue);
+        margin-bottom: 15px;
+        transition: color 0.4s ease;
+    }
+    
+    .initiative-card:hover .initiative-content h3 {
+        color: var(--accent-blue);
+    }
+    
+    .initiative-content p {
+        color: #555;
+        margin-bottom: 25px;
+        transition: color 0.4s ease;
+    }
+    
+    .initiative-card:hover .initiative-content p {
+        color: var(--primary-blue);
+    }
+    
+    .initiative-cta {
+        position: relative;
+        z-index: 2;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .initiatives {
+            padding: 70px 0;
+        }
+        
+        .initiatives-grid {
+            gap: 20px;
+        }
+        
+        .initiative-card {
+            padding: 25px;
+        }
+    }
+</style>
+
+    <!-- Fellowship Section -->
+    <section id="fellowship" class="fellowship">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Placements 101 Fellowship</h2>
+                <p>A 21-day immersive program designed to decode top-tier placements in consulting, finance, and product management etc. Built by those who’ve actually cracked Bain & Co, Nomura, Avendus, Meesho & more</p>
+            </div>
+            
+            <div class="fellowship-cards">
+                <div class="fellowship-card fade-in">
+                    <div class="card-header">
+                        <h3>Week 1</h3>
+                        <p>Placement Essentials</p>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Craft a placement-ready CV</li>
+                            <li>Answer behavioral questions confidently</li>
+                            <li>Build technical foundations</li>
+                            <li>Prepare for first-round interviews</li>
+                            <li>Understand recruiter expectations</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="fellowship-card fade-in">
+                    <div class="card-header">
+                        <h3>Week 2</h3>
+                        <p>Domain Deep Dive</p>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Understand what top firms look for</li>
+                            <li>Solve cases like a consultant</li>
+                            <li>Model like a finance analyst</li>
+                            <li>Think like a product manager</li>
+                            <li>Build role-specific strengths</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="fellowship-card fade-in">
+                    <div class="card-header">
+                        <h3>Week 3</h3>
+                        <p>Fellowship Sprint</p>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Apply learning in real-world simulation</li>
+                            <li>Complete guided domain-specific project</li>
+                            <li>Receive certificate of completion</li>
+                            <li>Get referrals & LinkedIn endorsements</li>
+                            <li>Showcase industry-ready output</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Resources Box -->
+            <div class="resources-box fade-in">
+                <h3>Download Program Resources</h3>
+                <div class="resource-links">
+                    <a href="https://drive.google.com/file/d/1uR3dlOHlLcqNbhZXT_Pg2nsMOiv3dQBx/view?usp=sharing" class="resource-link">
+                        <i class="fas fa-file-pdf"></i> Fellowship Brochure
+                    </a>
+                    <a href="https://drive.google.com/file/d/1CX0IQBDOC7H4_VsHMkspsmT0X55Pk2Bx/view?usp=sharing" class="resource-link">
+                        <i class="fas fa-book"></i> Program Primer
+                    </a>
+                    <a href="https://drive.google.com/file/d/13iGO0W86SLvbqkiigA4hf_gHjVPnDoS7/view?usp=sharing" class="resource-link">
+                        <i class="fas fa-file-contract"></i> Terms & Conditions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Unlock Early Access Now</h2>
+                <p>Get in at our exclusive early price. This window won’t stay open long</p>
+            </div>
+            
+            <div class="pricing-container fade-in">
+                <div class="pricing-header">
+                    <h3>Placements 101 Fellowship</h3>
+                    <p>Join Now</p>
+                </div>
+                
+                <div class="pricing-price" id="price-animation">
+                    ₹349 <span>₹1699</span>
+                </div>
+                
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="fellowship-min">59</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="fellowship-sec">00</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
+                
+                <div class="seats-left">Last 50 seats left at this price!</div>
+                
+                <!-- Improved enrollment note -->
+                <div class="enrollment-note">
+                    <i class="fas fa-users"></i> Over 250+ students from top colleges across the country such as SRCCs, IITs, & IIMs have already registered !
+                </div>
+                
+                <a href="https://superprofile.bio/vp/placements-101-fellowship" class="cta-button pulse" style="font-size: 18px; padding: 18px 45px;">Register Now</a>
+                
+                <p style="margin-top: 30px; color: #777;">Fellowship Dates: July 4th – July 25th, 2023</p>
+            </div>
+        </div>
+    </section>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proofr - Career Accelerator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base styles */
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #00c896;
+            --dark-color: #001a33;
+            --light-color: #ffffff;
+            --gray-color: #f5f7fa;
+            --text-color: #333333;
+            --text-light: #666666;
+            --accent-color: #ff6b6b;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--light-color);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* College Marquee Section */
+        .college-marquee {
+            padding: 80px 0;
+            background-color: #f9fafc;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-header h2 {
+            font-size: 36px;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+        
+        .section-header p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 18px;
+        }
+        
+        .marquee-container {
+            position: relative;
+            overflow: hidden;
+            margin-top: 40px;
+        }
+        
+        .marquee-track {
+            display: flex;
+            align-items: center;
+            animation: marquee 10s linear infinite;
+            will-change: transform;
+        }
+        
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+        
+        .marquee-item {
+            margin: 0 25px;
+            padding: 20px 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 150px;
+            min-width: 200px;
+            transition: all 0.3s ease;
+        }
+        
+        .marquee-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+            margin-bottom: 15px;
+        }
+        
+        .college-logo {
+            max-height: 60px;
+            max-width: 120px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+        
+        .marquee-item:hover .college-logo {
+            transform: scale(1.1);
+        }
+        
+        .college-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-light);
+            text-align: center;
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        /* Floating decorative logos */
+        .floating-logos {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .floating-logo {
+            position: absolute;
+            font-size: 24px;
+            color: rgba(0, 86, 179, 0.1);
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .college-marquee {
+                padding: 70px 0;
+            }
+            
+            .marquee-item {
+                margin: 0 20px;
+                padding: 18px 20px;
+                height: 140px;
+                min-width: 180px;
+            }
+            
+            .college-logo {
+                max-height: 55px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .college-marquee {
+                padding: 60px 0;
+            }
+            
+            .marquee-track {
+                animation: marquee 18s linear infinite;
+            }
+            
+            .marquee-item {
+                margin: 0 15px;
+                padding: 15px 12px;
+                height: 130px;
+                min-width: 160px;
+            }
+            
+            .college-logo {
+                max-height: 50px;
+            }
+            
+            .college-name {
+                font-size: 13px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .section-header h2 {
+                font-size: 28px;
+            }
+            
+            .marquee-track {
+                animation: marquee 12s linear infinite;
+            }
+            
+            .marquee-item {
+                margin: 0 12px;
+                padding: 12px 10px;
+                height: 120px;
+                min-width: 140px;
+            }
+            
+            .college-logo {
+                max-height: 45px;
+            }
+            
+            .college-name {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Existing website content would be here -->
+    
+    <!-- College Marquee Section -->
+    <section class="college-marquee">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Students Come From</h2>
+                <p>Top colleges across India</p>
+            </div>
+            
+            <div class="marquee-container">
+                <div class="marquee-track">
+                    <!-- College items will be duplicated by JavaScript -->
+                    <div class="marquee-item">
+                        <div class="logo-container">
+                            <img src="college logos/IIMA.svg" alt="IIM Ahmedabad" class="college-logo">
+                        </div>
+                        <div class="college-name">IIM Ahmedabad</div>
+                    </div>
+                    <div class="marquee-item">
+                        <div class="logo-container">
+                            <img src="college logos/IITD.png" alt="IIT Delhi" class="college-logo">
+                        </div>
+                        <div class="college-name">IIT Delhi</div>
+                    </div>
+                    <div class="marquee-item">
+                        <div class="logo-container">
+                            <img src="college logos/The_Official_Logo_of_Shri_Ram_College_of_Commerce(SRCC).png" alt="SRCC" class="college-logo">
+                        </div>
+                        <div class="college-name">SRCC, Delhi</div>
+                    </div>
+                    <div class="marquee-item">
+                        <div class="logo-container">
+                            <img src="college logos/St. Stephens.png" alt="St. Stephen's College" class="college-logo">
+                        </div>
+                        <div class="college-name">St. Stephen's College</div>
+                    </div>
+                    <div class="marquee-item">
+                        <div class="logo-container">
+                            <img src="college logos/LSR.png" alt="Lady Shri Ram College" class="college-logo">
+                        </div>
+                        <div class="college-name">Lady Shri Ram College</div>
+                    </div>
+                    <div class="marquee-item">
+                        <div class="logo-container">
+                            <img src="college logos/NMIMS.png" alt="FMS Delhi" class="college-logo">
+                        </div>
+                        <div class="college-name">NMIMS</div>
+                    </div>
+                    <div class="marquee-item">
+                        <div class="logo-container">
+                            <img src="college logos/Hindu.png" alt="Hindu College" class="college-logo">
+                        </div>
+                        <div class="college-name">Hindu College</div>
+                    </div>
+                    <div class="marquee-item">
+                        <div class="logo-container">
+                            <img src="college logos/kirorimal.png" alt="Kirorimal College" class="college-logo">
+                        </div>
+                        <div class="college-name">Kirorimal College</div>
+                    </div>
+                    <div class="marquee-item">
+                        <div class="logo-container">
+                            <img src="college logos/NMIMS.png" alt="NMIMS" class="college-logo">
+                        </div>
+                        <div class="college-name">NMIMS Mumbai</div>
+                    </div>
+                    <div class="marquee-item">
+                        <div class="logo-container">
+                            <img src="college logos/shaheedsukhdev.png" alt="SSCBS" class="college-logo">
+                        </div>
+                        <div class="college-name">Shaheed Sukhdev College</div>
+                    </div>
+                    <div class="marquee-item">
+                        <div class="logo-container">
+                            <img src="college logos/srivent.png" alt="Sri Venkateswara" class="college-logo">
+                        </div>
+                        <div class="college-name">Sri Venkateswara College</div>
+                    </div>
+                    <div class="marquee-item">
+                        <div class="logo-container">
+                            <img src="college logos/amity.png" alt="Amity" class="college-logo">
+                        </div>
+                        <div class="college-name">Amity International, Noida</div>
+                    </div>
+                    <div class="marquee-item">
+                        <div class="logo-container">
+                            <img src="college logos/SSCBS.png" alt="SSCBS" class="college-logo">
+                        </div>
+                        <div class="college-name">SSCBS, Delhi</div>
+                    </div>
+                    <div class="marquee-item">
+                        <div class="logo-container">
+                            <img src="college logos/IIT DELHI.svg" alt="IIT Delhi" class="college-logo">
+                        </div>
+                        <div class="college-name">IIT Delhi</div>
+                    </div>
+                    <div class="marquee-item">
+                        <div class="logo-container">
+                            <img src="college logos/SPJIMR.svg" alt="SPJIMR" class="college-logo">
+                        </div>
+                        <div class="college-name">SPJIMR Mumbai</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Floating decorative logos -->
+            <div class="floating-logos">
+                <div class="floating-logo" style="top: 20%; left: 10%; animation-delay: 0s;">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="floating-logo" style="top: 60%; left: 15%; animation-delay: 1s;">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="floating-logo" style="top: 40%; left: 85%; animation-delay: 2s;">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div class="floating-logo" style="top: 80%; left: 90%; animation-delay: 3s;">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <div class="floating-logo" style="top: 30%; left: 45%; animation-delay: 4s;">
+                    <i class="fas fa-certificate"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Duplicate marquee items for seamless looping
+        const marqueeTrack = document.querySelector('.marquee-track');
+        if (marqueeTrack) {
+            // Duplicate the items for seamless looping
+            marqueeTrack.innerHTML += marqueeTrack.innerHTML;
+            
+            // Pause animation on hover
+            marqueeTrack.addEventListener('mouseenter', () => {
+                marqueeTrack.style.animationPlayState = 'paused';
+            });
+            
+            marqueeTrack.addEventListener('mouseleave', () => {
+                marqueeTrack.style.animationPlayState = 'running';
+            });
+            
+            // Touch events for mobile
+            marqueeTrack.addEventListener('touchstart', () => {
+                marqueeTrack.style.animationPlayState = 'paused';
+            });
+            
+            marqueeTrack.addEventListener('touchend', () => {
+                marqueeTrack.style.animationPlayState = 'running';
+            });
+        }
+
+        // Handle image loading errors
+        document.querySelectorAll('.college-logo').forEach(img => {
+            img.addEventListener('error', function() {
+                console.error('Failed to load image:', this.src);
+                this.style.display = 'none';
+                const fallback = document.createElement('div');
+                fallback.textContent = this.alt;
+                fallback.style.fontWeight = 'bold';
+                fallback.style.color = '#0056b3';
+                fallback.style.textAlign = 'center';
+                this.parentNode.appendChild(fallback);
+            });
+        });
+    </script>
+</html>
+<!-- Founders Section -->
+    <section id="founders" class="founders-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Know Your Founders</h2>
+                <p>The visionaries behind Proofr's mission to transform early careers</p>
+            </div>
+            
+            <div class="founders-grid">
+                <!-- Soham Khare -->
+                <div class="founder-card fade-in">
+                    <div class="founder-header">
+                        <div class="founder-image">
+                            <img src="SOHAM.jpg" alt="Soham Khare">
+                        </div>
+                        <div class="founder-info">
+                            <h3>Soham Khare</h3>
+                            <div class="founder-title">Co-founder</div>
+                        </div>
+                    </div>
+                    <div class="founder-body">
+                        <p class="founder-quote">
+                            Soham Khare is the co-founder of Proofr, currently studying at SRCC. With a background in consulting prep and early-career mentorship, he leads product and growth at Proofr, focused on helping students signal skill with proof-of-work in hiring and internships.
+
+"
+                        </p>
+                        
+                        <div class="founder-metrics">
+                            <div class="founder-metric">
+                                <i class="fas fa-rocket"></i>  Top 2% Corporate Finance Creator Worldwide
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="founder-social-links">
+                            <a href="https://www.linkedin.com/in/hisoham/" class="founder-social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            
+                            <a href="mailto:sohamkhare.srcc@gmail.com" class="founder-social-link">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Aryan Aggarwal -->
+                <div class="founder-card fade-in">
+                    <div class="founder-header">
+                        <div class="founder-image">
+                            <img src="ARYAN.jpg">
+                        </div>
+                        <div class="founder-info">
+                            <h3>Aryan Aggarwal</h3>
+                            <div class="founder-title">Co-founder</div>
+                        </div>
+                    </div>
+                    <div class="founder-body">
+                        <p class="founder-quote">
+                            Aryan Agarwal is the co-founder of Proofr and a student of SRCC. With experience in business, finance, and career content, he drives community and partnerships at Proofr, building platforms that bridge the gap between college students & top-tier opportunities.
+
+"
+                        </p>
+                        
+                        <div class="founder-metrics">
+                            <div class="founder-metric">
+                                <i class="fas fa-project-diagram"></i> Top 5% Financial Markets Creator Worldwide
+
+                            </div>
+                
+                        </div>
+                        
+                        <div class="founder-social-links">
+                            <a href="https://www.linkedin.com/in/aryanagarwalsc/" class="founder-social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                        
+                            </a>
+                            <a href="mailto:agarwalaryan564@gmail.com" class="founder-social-link">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about the Fellowship</p>
+            </div>
+            
+            <div class="faq-container">
+                <!-- FAQ items will be added dynamically with JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+<!-- Testimonials Section -->
+<section id="testimonials" class="testimonials">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Success Stories</h2>
+            <p>Hear from students who transformed their careers with Proofr</p>
+        </div>
+        
+        <div class="testimonials-container">
+            <div class="testimonials-track">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-content">
+                        "I love the fact how Proofr streamlines the opportunities tailored to my interests — directly to my DM. Saves a lot of time spent researching on LinkedIn, while also providing quality opportunities that I otherwise might have missed in the noise"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="students_image/satyansh.jpg" alt="Priya Sharma">
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name">Satyansh Sharma</div>
+                            <div class="author-college">IIT Kanpur</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-content">
+                        "Proofr made my summer internship hunt way easier, from sharing resources to hosting chats with top consulting pros. Can't wait for the fellowship to start"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="students_image/Ishan.jpg" alt="Rahul Mehta">
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name">Ishan Gyan</div>
+                            <div class="author-college">Hindu College</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-content">
+                        "Placements 101 by Proofr was a game-changer for me.
+The sessions were concise, practical and incredibly insightful. From resume building to cracking interviews, everything was covered with real-world relevance. I walked away more confident and better prepared for placement season. Highly recommend it to anyone looking to get a head start!
+"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="students_image/Ruchika.jpg" alt="Arjun Khanna">
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name">Ruchika Jiaswal</div>
+                            <div class="author-college">Gargi College</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 5 -->
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-content">
+                        "As someone keen on consulting but new to the field, Proofr has offered valuable insights through sessions led by students who’ve already secured roles at my target companies. This feels like the start of an upward curve."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="students_image/Siya.jpg" alt="Neha Gupta">
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name">Siya Aggarwal</div>
+                            <div class="author-college">Kirorimal College</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 6 -->
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-content">
+                        "Proofr's resources gave me a strong foundation in career planning, from resume building to cracking case problems. Their structured approach made complex concepts easy to app"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="students_image/Vinayak.jpg" alt="Vikram Singh">
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name">Vinayak Aggarwal</div>
+                            <div class="author-college">SGGSCC</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-content">
+                        "I love the fact how Proofr streamlines the opportunities tailored to my interests — directly to my DM. Saves a lot of time spent researching on LinkedIn, while also providing quality opportunities that I otherwise might have missed in the noise"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="students_image/satyansh.jpg" alt="Priya Sharma">
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name">Satyansh Sharma</div>
+                            <div class="author-college">IIT Kanpur</div>
+                        </div>
+                    </div>
+                </div><!-- Testimonial 1 -->
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-content">
+                        "Proofr truly helped me level up my consulting prep - their curated case studies from top IIMs, resume resources, and expert-led sessions gave me a real edge while planning my career path"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="students_image/Chinmay.jpg" alt="Priya Sharma">
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name">Chinmay Goyal</div>
+                            <div class="author-college">MBA NMIMS</div>
+                        </div>
+                    </div>
+                </div>
+                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="testimonials-cta fade-in">
+            <a href="https://superprofile.bio/vp/placements-101-fellowship" class="cta-button">Join Our Success Stories</a>
+        </div>
+    </div>
+</section>
+
+<!-- Add this CSS -->
+<style>
+    /* Testimonials Section */
+    .testimonials {
+        padding: 100px 0;
+        background-color: white;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .testimonials::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(0, 85, 255, 0.05) 0%, transparent 70%);
+        border-radius: 50%;
+        z-index: 0;
+    }
+    
+    .testimonials-container {
+        position: relative;
+        padding: 30px 0;
+        overflow: hidden;
+    }
+    
+    .testimonials-track {
+        display: flex;
+        gap: 30px;
+        animation: marquee 30s linear infinite;
+        width: max-content;
+    }
+    
+    .testimonials-track:hover {
+        animation-play-state: paused;
+    }
+    
+    .testimonial-card {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 85, 255, 0.1);
+        width: 350px;
+        min-width: 350px;
+        flex-shrink: 0;
+        transition: all 0.4s ease;
+        position: relative;
+        border: 1px solid rgba(0, 85, 255, 0.1);
+    }
+    
+    .testimonial-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 85, 255, 0.15);
+    }
+    
+    .testimonial-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: var(--gradient-accent);
+        border-radius: 20px 20px 0 0;
+    }
+    
+    .testimonial-rating {
+        color: #FFD700;
+        margin-bottom: 20px;
+        font-size: 18px;
+    }
+    
+    .testimonial-content {
+        font-size: 16px;
+        line-height: 1.7;
+        color: #555;
+        margin-bottom: 25px;
+        font-style: italic;
+        position: relative;
+    }
+    
+    .testimonial-content::before,
+    .testimonial-content::after {
+        content: '"';
+        font-size: 40px;
+        color: var(--light-blue);
+        opacity: 0.3;
+        position: absolute;
+        font-family: Georgia, serif;
+    }
+    
+    .testimonial-content::before {
+        top: -15px;
+        left: -10px;
+    }
+    
+    .testimonial-content::after {
+        bottom: -30px;
+        right: -5px;
+    }
+    
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .author-image {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid var(--light-blue);
+    }
+    
+    .author-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .author-info {
+        flex: 1;
+    }
+    
+    .author-name {
+        font-weight: 700;
+        color: var(--primary-blue);
+        margin-bottom: 5px;
+    }
+    
+    .author-college {
+        font-size: 14px;
+        color: #777;
+    }
+    
+    .testimonials-cta {
+        text-align: center;
+        margin-top: 50px;
+    }
+    
+    @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+        .testimonial-card {
+            width: 320px;
+            min-width: 320px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .testimonials {
+            padding: 80px 0;
+        }
+        
+        .testimonial-card {
+            width: 280px;
+            min-width: 280px;
+            padding: 25px;
+        }
+        
+        .testimonials-track {
+            animation: marquee 20s linear infinite;
+            gap: 20px;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .testimonial-card {
+            width: 260px;
+            min-width: 260px;
+        }
+        
+        .testimonials-track {
+            animation: marquee 15s linear infinite;
+        }
+    }
+</style>
+
+<!-- Add this JavaScript -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize testimonials marquee
+        const track = document.querySelector('.testimonials-track');
+        if (track) {
+            function adjustSpeed() {
+                track.style.animationDuration = window.innerWidth < 768 ? '20s' : '30s';
+            }
+            
+            // Initial adjustment
+            adjustSpeed();
+            
+            // Adjust on resize
+            window.addEventListener('resize', adjustSpeed);
+            
+            // Ensure animation starts
+            track.style.animation = 'marquee 30s linear infinite';
+        }
+        
+        // Check if Font Awesome is loaded for stars
+        if (typeof FontAwesome === 'undefined') {
+            const faScript = document.createElement('script');
+            faScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js';
+            document.head.appendChild(faScript);
+        }
+    });
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proofr - Enhanced Team Section</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Team Section Styles */
+        .team-section {
+            padding: 100px 0;
+            background: linear-gradient(to bottom, #ffffff, #f0f7ff);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/clean-gray-paper.png');
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .team-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .team-header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 42px;
+            color: #001a33;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .team-header h2::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(135deg, #0055ff 0%, #00c896 100%);
+            border-radius: 3px;
+        }
+        
+        .team-header p {
+            max-width: 700px;
+            margin: 30px auto 0;
+            font-size: 18px;
+            color: #555;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 26, 51, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            transform: translateY(0);
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 26, 51, 0.15);
+        }
+        
+        .team-member::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(135deg, #0055ff 0%, #00c896 100%);
+            z-index: 2;
+            transition: height 0.4s ease;
+        }
+        
+        .team-member:hover::before {
+            height: 100%;
+        }
+        
+        .member-header {
+            padding: 30px;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .member-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 3;
+            transition: all 0.4s ease;
+            background: #e6f0ff;
+        }
+        
+        .team-member:hover .member-image {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .member-info {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .member-info h3 {
+            font-size: 24px;
+            color: #001a33;
+            margin-bottom: 5px;
+            transition: color 0.4s ease;
+        }
+        
+        .member-title {
+            color: #0055ff;
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 18px;
+            transition: color 0.4s ease;
+        }
+        
+        .member-body {
+            padding: 0 30px 30px;
+            position: relative;
+            z-index: 2;
+            flex-grow: 1;
+        }
+        
+        .member-description {
+            color: #555;
+            position: relative;
+            padding: 0 0 0 30px;
+            line-height: 1.8;
+            transition: color 0.4s ease;
+            font-size: 16px;
+        }
+        
+        .member-description::before {
+            content: """;
+            font-size: 60px;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            color: #e6f0ff;
+            font-family: Georgia, serif;
+            line-height: 1;
+            opacity: 0.8;
+            z-index: -1;
+            transition: all 0.4s ease;
+        }
+        
+        .team-member:hover .member-description::before {
+            color: white;
+            opacity: 0.3;
+        }
+        
+        /* NEW LINKEDIN DESIGN */
+        .linkedin-corner {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            z-index: 10;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            opacity: 0.8;
+        }
+        
+        .team-member:hover .linkedin-corner {
+            opacity: 1;
+            transform: rotate(5deg) scale(1.1);
+        }
+        
+        .linkedin-corner a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #0077b5;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 119, 181, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .linkedin-corner a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,85,255,0.7) 0%, rgba(0,200,150,0.7) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .linkedin-corner a:hover::before {
+            opacity: 1;
+        }
+        
+        .linkedin-corner a i {
+            font-size: 22px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .linkedin-corner a:hover {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 8px 25px rgba(0, 119, 181, 0.5);
+        }
+        
+        .linkedin-corner .tooltip {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #0077b5;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .linkedin-corner .tooltip::after {
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid #0077b5;
+        }
+        
+        .linkedin-corner a:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+            top: -35px;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .team-grid {
+                gap: 30px;
+            }
+            
+            .member-image {
+                width: 130px;
+                height: 130px;
+            }
+            
+            .linkedin-corner {
+                top: 20px;
+                right: 20px;
+            }
+            
+            .linkedin-corner a {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .linkedin-corner a i {
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .team-section {
+                padding: 70px 0;
+            }
+            
+            .team-header h2 {
+                font-size: 36px;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .member-image {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .linkedin-corner {
+                top: 15px;
+                right: 15px;
+            }
+            
+            .linkedin-corner a {
+                width: 42px;
+                height: 42px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .team-header h2 {
+                font-size: 32px;
+            }
+            
+            .team-header p {
+                font-size: 16px;
+            }
+            
+            .member-image {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .linkedin-corner {
+                top: 12px;
+                right: 12px;
+            }
+            
+            .linkedin-corner a {
+                width: 38px;
+                height: 38px;
+            }
+            
+            .linkedin-corner a i {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Get In Touch</h2>
+                <p>Have questions? We're here to help!</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info fade-in">
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>WhatsApp Support</h4>
+                            <p>+91 8800247661</p>
+                            <a href="https://wa.me/8800247661" style="color: var(--accent-blue); text-decoration: none;">Message Us →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email Us</h4>
+                            <p>projectproofr@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>LinkedIn</h4>
+                            <p>Connect with us on LinkedIn</p>
+                            <a href="https://www.linkedin.com/company/proofr/" style="color: var(--accent-blue); text-decoration: none;">Visit Page →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form fade-in">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="cta-button" style="width: 100%; text-align: center; padding: 16px;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-links">
+                    <div class="footer-logo">Proo<span>fr</span></div>
+                    <div class="footer-about">
+                        <p>Proofr replaces traditional resumes with proof-of-work, enabling students to showcase real project experience to top companies.</p>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/company/proofr/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://twitter.com/proofr" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="https://instagram.com/proofr" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#fellowship"><i class="fas fa-chevron-right"></i> Programs</a></li>
+                        <li><a href="#pricing"><i class="fas fa-chevron-right"></i> Pricing</a></li>
+                        <li><a href="#faq"><i class="fas fa-chevron-right"></i> FAQs</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://tinyurl.com/placements101-brochure"><i class="fas fa-chevron-right"></i> Fellowship Brochure</a></li>
+                        <li><a href="https://tinyurl.com/placements101-primer"><i class="fas fa-chevron-right"></i> Program Primer</a></li>
+                        <li><a href="https://tinyurl.com/placements101-TnC"><i class="fas fa-chevron-right"></i> Terms & Conditions</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Blog & Articles</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Success Stories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Founders</h4>
+                    <ul>
+                        <li><a href="https://www.linkedin.com/in/aryanagarwalsc/"><i class="fas fa-chevron-right"></i> Aryan Aggarwal</a></li>
+                        <li><a href="https://www.linkedin.com/in/hisoham/"><i class="fas fa-chevron-right"></i> Soham Khare</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Proofr. All rights reserved. Designed by Anirudh Chaudhary </p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all components
+            initParticleBackground();
+            initSessionTimer();
+            initFellowshipTimer();
+            initFaq();
+            initCompanyLogos();
+            initStatsAnimation();
+            initImpactStats();
+            initScrollAnimations();
+            initSmoothScrolling();
+        });
+        
+        // ===== COMPONENT FUNCTIONS =====
+        
+        // Create floating particles
+        function initParticleBackground() {
+            const canvas = document.getElementById('particles-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas to full size of hero section
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            
+            // Particle system configuration
+            const particles = [];
+            const particleCount = Math.floor(canvas.width / 10);
+            const colors = ['rgba(0, 85, 255, 0.5)', 'rgba(0, 200, 150, 0.5)', 'rgba(255, 255, 255, 0.3)'];
+            
+            // Create particles
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 3 + 1,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    speedX: (Math.random() - 0.5) * 0.5,
+                    speedY: (Math.random() - 0.5) * 0.5,
+                });
+            }
+            
+            // Animation loop
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw particles
+                particles.forEach(particle => {
+                    ctx.beginPath();
+                    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    ctx.fillStyle = particle.color;
+                    ctx.fill();
+                    
+                    // Move particles
+                    particle.x += particle.speedX;
+                    particle.y += particle.speedY;
+                    
+                    // Reset particles that go off screen
+                    if (particle.x < 0 || particle.x > canvas.width || 
+                        particle.y < 0 || particle.y > canvas.height) {
+                        particle.x = Math.random() * canvas.width;
+                        particle.y = Math.random() * canvas.height;
+                    }
+                });
+                
+                requestAnimationFrame(animateParticles);
+            }
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+            });
+            
+            animateParticles();
+        }
+        
+        // Session Countdown Timer (for today at 11:59 PM)
+        function initSessionTimer() {
+            function updateSessionTimer() {
+                const now = new Date();
+                const today1159PM = new Date();
+                
+                // Set target time to 11:59 PM today
+                today1159PM.setHours(23, 59, 0, 0);
+                
+                // If it's already past 11:59 PM, set to tomorrow
+                if (now > today1159PM) {
+                    today1159PM.setDate(today1159PM.getDate() + 1);
+                }
+                
+                const diff = today1159PM - now;
+                
+                // If countdown has expired
+                if (diff <= 0) {
+                    document.querySelector('.session-countdown').remove();
+                    document.querySelector('.session-banner-text').innerHTML = 
+                        '<i class="fas fa-calendar-alt"></i> Enrollment for this batch has closed!';
+                    return;
+                }
+                
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                document.getElementById('session-hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('session-min').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('session-sec').textContent = seconds.toString().padStart(2, '0');
+            }
+            
+            setInterval(updateSessionTimer, 1000);
+            updateSessionTimer();
+        }
+        
+        // Fellowship Countdown Timer (59 minutes)
+        function initFellowshipTimer() {
+            let fellowshipMinutes = 59;
+            let fellowshipSeconds = 0;
+            
+            function updateFellowshipTimer() {
+                document.getElementById('fellowship-min').textContent = fellowshipMinutes.toString().padStart(2, '0');
+                document.getElementById('fellowship-sec').textContent = fellowshipSeconds.toString().padStart(2, '0');
+                
+                if (fellowshipSeconds === 0) {
+                    if (fellowshipMinutes === 0) {
+                        // Timer ended, reset to 59 minutes
+                        fellowshipMinutes = 59;
+                        fellowshipSeconds = 0;
+                    } else {
+                        fellowshipMinutes--;
+                        fellowshipSeconds = 59;
+                    }
+                } else {
+                    fellowshipSeconds--;
+                }
+            }
+            
+            setInterval(updateFellowshipTimer, 1000);
+        }
+        
+        // FAQ Initialization
+        function initFaq() {
+            const faqData = [
+                {
+                    question: "Why is the fellowship priced at ₹349?",
+                    answer: "We've kept the price low to make it accessible to every student. All proceeds go toward onboarding quality mentors and reinvesting into better resources, sessions, and support for participants."
+                },
+                {
+                    question: "Is this just for undergraduates?",
+                    answer: "No, the fellowship is open to anyone, regardless of degree or background. Whether you're an undergraduate, a postgraduate, on a gap year, or a CA, the skills, strategies, and proof-of-work you'll build apply universally across roles and industries."
+                },
+                {
+                    question: "How much time will I need to commit each week?",
+                    answer: "Expect to spend around 6–8 hours per week, spread across short daily tasks, project work, and live/recorded mentor sessions. It's built to be flexible and async-first."
+                },
+                {
+                    question: "Do I get a certificate after completing the cohort?",
+                    answer: "Yes. Everyone who completes the fellowship project receives a Proofr-certified fellowship certificate. Top performers also get referrals, endorsements, and LinkedIn shoutouts from mentors."
+                },
+                {
+                    question: "What kind of mentors will I get access to?",
+                    answer: "Mentors include professionals and recent grads from Bain, Avendus, Nomura, PwC, Deloitte, Meesho and more across consulting, finance, product, and marketing."
+                },
+                {
+                    question: "What if I miss a live session?",
+                    answer: "All sessions are recorded and uploaded. Since the cohort is async-friendly, you can access everything later — without missing key content or losing pace."
+                },
+                {
+                    question: "Can I do this alongside college or an internship?",
+                    answer: "Absolutely. The structure is designed to fit around your schedule. Tasks are broken down into manageable chunks, and most sessions can be accessed anytime."
+                },
+                {
+                    question: "What if I haven't decided which domain I want to pursue yet?",
+                    answer: "That's completely okay. Week 1 of the cohort is designed to give you clarity on different roles across consulting, finance, marketing, product so you can choose a domain and build proof-of-work accordingly."
+                },
+                {
+                    question: "Is this only useful for final placements, or will it help with internships and off-campus roles too?",
+                    answer: "The cohort is designed for both internships and full-time placements, including off-campus roles. Whether you're in 2nd year applying for summer internships or a final-year student preparing for full-time jobs, the resume formats, outreach playbooks, and project-based proof-of-work apply across stages and industries."
+                }
+            ];
+
+            const faqContainer = document.querySelector('.faq-container');
+            
+            faqData.forEach((faq, index) => {
+                const faqItem = document.createElement('div');
+                faqItem.className = 'faq-item';
+                
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'faq-question';
+                questionDiv.innerHTML = `
+                    ${faq.question}
+                    <i class="fas fa-chevron-down"></i>
+                `;
+                
+                const answerDiv = document.createElement('div');
+                answerDiv.className = 'faq-answer';
+                answerDiv.innerHTML = `<p>${faq.answer}</p>`;
+                
+                faqItem.appendChild(questionDiv);
+                faqItem.appendChild(answerDiv);
+                faqContainer.appendChild(faqItem);
+                
+                // Add click event to toggle answer
+                questionDiv.addEventListener('click', () => {
+                    const isActive = answerDiv.classList.contains('active');
+                    
+                    // Toggle current FAQ answer
+                    if (!isActive) {
+                        answerDiv.classList.add('active');
+                        faqItem.classList.add('active');
+                    } else {
+                        answerDiv.classList.remove('active');
+                        faqItem.classList.remove('active');
+                    }
+                });
+            });
+        }
+        
+        // Company Logos Marquee
+        function initCompanyLogos() {
+            const companyLogos = [
+                {name: "Accenture", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Accenture.svg/320px-Accenture.svg.png"},
+                {name: "Bain", url: "https://cdn.brandfetch.io/idd01EA1ZR/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B"},
+                {name: "Deloitte", url: "https://cdn.brandfetch.io/idIu-Ji9Le/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B"},
+                {name: "McKinsey", url: "https://cdn.brandfetch.io/iddTc-lesG/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B"},
+                {name: "PwC", url: "https://cdn.brandfetch.io/idGJDqQ72Q/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B"},
+                {name: "Nomura", url: "https://cdn.brandfetch.io/idXrk_5-TO/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B"},
+                {name: "BCG", url: "https://media-publications.bcg.com/BCG_MONOGRAM.png"},
+                {name: "Goldman Sachs", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Goldman_Sachs.svg/320px-Goldman_Sachs.svg.png"},
+                {name: "JP Morgan", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/JPMorgan_Chase_%282018%29.svg/320px-JPMorgan_Chase_%282018%29.svg.png"},
+                {name: "Morgan Stanley", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Morgan_Stanley_Logo.svg/320px-Morgan_Stanley_Logo.svg.png"},
+            ];
+
+            const marquee = document.querySelector('.marquee');
+            
+            // Add double the logos for continuous scrolling effect
+            companyLogos.forEach(logo => {
+                const companyItem = document.createElement('div');
+                companyItem.className = 'company-item';
+                companyItem.innerHTML = `<img src="${logo.url}" alt="${logo.name}" class="company-logo">`;
+                marquee.appendChild(companyItem);
+            });
+            
+            // Add them again for the seamless loop
+            companyLogos.forEach(logo => {
+                const companyItem = document.createElement('div');
+                companyItem.className = 'company-item';
+                companyItem.innerHTML = `<img src="${logo.url}" alt="${logo.name}" class="company-logo">`;
+                marquee.appendChild(companyItem);
+            });
+        }
+        
+        // Stats Animation
+        function initStatsAnimation() {
+            function animateValue(id, start, end, duration) {
+                const obj = document.getElementById(id);
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const value = Math.floor(progress * (end - start) + start);
+                    obj.innerHTML = value.toLocaleString() + '+';
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+            
+            // Animate all stats
+            setTimeout(() => {
+                animateValue("students-count", 0, 10000, 2000);
+                animateValue("linkedin-count", 0, 50000, 2000);
+                animateValue("resources-count", 0, 200, 2000);
+                animateValue("opportunities-count", 0, 100, 2000);
+            }, 500);
+        }
+        
+         // Fixed Impact Stats Animation
+        function initImpactStats() {
+            const statElements = document.querySelectorAll('.impact-stat .stat-number');
+            const duration = 2000; // 2 seconds for counting animation
+            const repeatInterval = 10000; // 10 seconds between repeats
+            
+            // Easing function for smooth animation
+            function easeOutQuad(t) {
+                return t * (2 - t);
+            }
+
+            function animateCount(element, target) {
+                let start = 0;
+                const startTime = performance.now();
+                
+                const updateCount = (currentTime) => {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easedProgress = easeOutQuad(progress);
+                    const currentValue = Math.floor(easedProgress * target);
+                    
+                    element.textContent = currentValue.toLocaleString() + (target >= 1000 ? '+' : '');
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCount);
+                    }
+                };
+                
+                requestAnimationFrame(updateCount);
+            }
+
+            // Initialize all counters
+            function startAnimations() {
+                statElements.forEach(element => {
+                    const target = parseInt(element.getAttribute('data-target'));
+                    animateCount(element, target);
+                });
+            }
+
+            // Start first animation
+            startAnimations();
+
+            // Set up repeating animation
+            let animationInterval = setInterval(() => {
+                statElements.forEach(element => {
+                    element.textContent = '0' + (parseInt(element.getAttribute('data-target')) >= 1000 ? '+' : '');
+                });
+                setTimeout(startAnimations, 100);
+            }, repeatInterval);
+
+            // Clean up on page unload
+            window.addEventListener('beforeunload', () => {
+                clearInterval(animationInterval);
+            });
+        }
+        
+        // Scroll Animations
+        function initScrollAnimations() {
+            // Header scroll effect
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Fade-in animation on scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+        
+        // Smooth Scrolling
+        function initSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const target = document.querySelector(this.getAttribute('href'));
+                    
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+    </script>
+
+   <script>
+// Modified Exit Intent Popup Logic - Shows only once after 10 seconds
+document.addEventListener('DOMContentLoaded', function() {
+    const exitPopup = document.getElementById('exit-popup');
+    const closePopup = document.querySelector('.close-popup');
+    const minutesEl = document.getElementById('popup-minutes');
+    const secondsEl = document.getElementById('popup-seconds');
+    
+    // Initialize with 3:00 countdown
+    let minutesLeft = 3;
+    let secondsLeft = 0;
+    let countdownTimer;
+    let hasPopupShown = false;
+    
+    // Check if popup was already shown (using sessionStorage)
+    if (sessionStorage.getItem('popupShown') !== 'true') {
+        // Show popup after 10 seconds
+        setTimeout(function() {
+            showExitPopup();
+            // Mark as shown in sessionStorage
+            sessionStorage.setItem('popupShown', 'true');
+        }, 10000);
+    }
+    
+    // Update countdown display
+    function updateCountdown() {
+        secondsEl.textContent = secondsLeft.toString().padStart(2, '0');
+        minutesEl.textContent = minutesLeft.toString().padStart(2, '0');
+        
+        if (secondsLeft === 0) {
+            if (minutesLeft === 0) {
+                // Countdown finished
+                clearInterval(countdownTimer);
+            } else {
+                minutesLeft--;
+                secondsLeft = 59;
+            }
+        } else {
+            secondsLeft--;
+        }
+    }
+    
+    // Show popup function
+    function showExitPopup() {
+        if (!hasPopupShown) {
+            exitPopup.classList.add('active');
+            hasPopupShown = true;
+            startCountdown();
+        }
+    }
+    
+    // Start countdown timer
+    function startCountdown() {
+        countdownTimer = setInterval(updateCountdown, 1000);
+    }
+    
+    // Hide popup function
+    function hideExitPopup() {
+        exitPopup.classList.remove('active');
+        clearInterval(countdownTimer);
+    }
+    
+    // Close popup when X is clicked
+    closePopup.addEventListener('click', hideExitPopup);
+    
+    // Close popup when clicking outside content
+    exitPopup.addEventListener('click', function(e) {
+        if (e.target === exitPopup) {
+            hideExitPopup();
+        }
+    });
+});
+</script>
+<!-- Add this right before your closing </body> tag -->
+<!-- Enrollment Notification System -->
+<div class="enrollment-notification" id="enrollmentNotification">
+  <div class="notification-icon">
+    <i class="fas fa-user-graduate"></i>
+  </div>
+  <div class="notification-content">
+    <div class="notification-title">NEW ENROLLMENT</div>
+    <div class="notification-text">Someone from <span class="city-name" id="notificationCity"></span> just enrolled in Placements 101!</div>
+    <div class="notification-action">
+      <i class="fas fa-arrow-right"></i> Limited seats available
+    </div>
+  </div>
+</div>
+
+<audio id="notificationSound"></audio>
+
+<script>
+// ===== ENROLLMENT NOTIFICATION =====
+document.addEventListener('DOMContentLoaded', function() {
+  // Only run if elements exist
+  const notification = document.getElementById('enrollmentNotification');
+  const cityElement = document.getElementById('notificationCity');
+  const notificationSound = document.getElementById('notificationSound');
+  
+  if (!notification || !cityElement || !notificationSound) return;
+  
+  // Create a simple beep sound using Web Audio API
+  function createBeep() {
+    try {
+      const context = new (window.AudioContext || window.webkitAudioContext)();
+      const oscillator = context.createOscillator();
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(800, context.currentTime);
+      oscillator.connect(context.destination);
+      oscillator.start();
+      oscillator.stop(context.currentTime + 0.1);
+    } catch (e) {
+      console.log("Audio error:", e);
+    }
+  }
+  
+  // Cities array
+  const cities = [
+    "Noida", "New Delhi", "Lucknow", "Ghaziabad", "Dasna", 
+    "Mumbai", "Greater Noida", "Aligarh", "Kanpur", 
+    "South Delhi", "Chandigarh", "Kochi", "Punjab"
+  ];
+  
+  // Show notification function
+  function showNotification() {
+    // Get random city
+    const randomCity = cities[Math.floor(Math.random() * cities.length)];
+    cityElement.textContent = randomCity;
+    
+    // Play sound
+    createBeep();
+    
+    // Show notification
+    notification.classList.add('show');
+    
+    // Hide after 3 seconds (mobile: 2 seconds)
+    setTimeout(() => {
+      notification.classList.remove('show');
+    }, window.innerWidth < 768 ? 2000 : 3000);
+  }
+  
+  // Show first notification after 2 seconds
+  setTimeout(showNotification, 2000);
+  
+  // Show subsequent notifications every 5 seconds
+  setInterval(showNotification, 10000);
+});
+</script>
+
+<style>
+/* ===== ENROLLMENT NOTIFICATION ===== */
+.enrollment-notification {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transform: translateX(-110%);
+  transition: transform 0.4s ease-out;
+  z-index: 9999;
+  max-width: 350px;
+  border-left: 4px solid #00c896;
+  animation: pulse-border 2s infinite;
+}
+
+.enrollment-notification.show {
+  transform: translateX(0);
+}
+
+.notification-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #0055ff 0%, #00c896 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: white;
+}
+
+.notification-content {
+  flex: 1;
+}
+
+.notification-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #001a33;
+  margin-bottom: 5px;
+}
+
+.notification-text {
+  font-size: 15px;
+  color: #555;
+}
+
+.city-name {
+  font-weight: 700;
+  color: #0055ff;
+}
+
+.notification-action {
+  font-size: 13px;
+  color: #00c896;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+@keyframes pulse-border {
+  0% { border-left-color: #00c896; }
+  50% { border-left-color: #0055ff; }
+  100% { border-left-color: #00c896; }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .enrollment-notification {
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    max-width: none;
+    padding: 12px 15px;
+  }
+  
+  .notification-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  
+  .notification-text {
+    font-size: 14px;
+  }
+}
+</style>
